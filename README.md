@@ -21,3 +21,30 @@ If you have Linux server(MySQL, Apache, TCP/IP server) and two NuMaker-IoT-M264A
 |g++|Compiler for TCP/IP Server|Version 7.5.0|
 |MySQL|Database|Version 14.14|
 |PHP|Script for Web page|Version 7.2.24|
+
+## Settings
+You can modify values for IoT Platform.
+
+Include/settings.h
+```c
+#define WIFI_AP_NAME        "Your AP Name"
+#define WIFI_AP_PASSWORD    "Your AP Password"
+
+#define TCPIP_SERVER_IP     "Your Server IP"
+#define TCPIP_SERVER_PORT   3360 // You can change it
+
+#define DB_SERVER_IP        "127.0.0.1"
+#define DB_SERVER_ID        "Your MySQL Account ID"
+#define DB_SERVER_PASSWORD  "Your MySQL Account Password"
+#define DB_NAME             "Your Database Name"
+```
+
+PHP_Webpage/index.php
+```php
+// connect to mysql
+$db = mysqli_connect('Your MySQL IP', 'Your MySQL Account ID', 'Your MySQL Account Password', 'Your DB Name'); 
+
+```
+
+## Firmware
+Device will read GPIO(PB7 to PB4) when boot-up. Read value will be set to Device ID value. If Device ID is 0, Device will start work as Gateway role. If Device ID is non 0, Device will start work as only sensor role. Sensor device will send Air-quality data to Gateway via LoRa. Gateway device will send Air-quality data to TCP/IP Server via Wi-Fi. You need to modify value about your information of AP and Server in "settings.h" file.
