@@ -65,3 +65,7 @@ Table Name: sensor_table
 If you built web server and PHP, you can access PHP file and view charts of air-quality data using web browser. You need to modify information of Server in "index.php" file.
 
 ![image](https://user-images.githubusercontent.com/99227045/184070533-fbb92330-5cf6-4487-929a-1e83de99bc9b.png)
+
+## Thanks to
+[BME680_driver](https://github.com/BoschSensortec/BME680_driver)<br/>
+[EC_ML51_LoRa_Control_V1.00](https://www.nuvoton.com/resource-download.jsp?tp_GUID=EC0120200103114211)
