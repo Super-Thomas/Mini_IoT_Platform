@@ -47,4 +47,21 @@ $db = mysqli_connect('Your MySQL IP', 'Your MySQL Account ID', 'Your MySQL Accou
 ```
 
 ## Firmware
-Device will read GPIO(PB7 to PB4) when boot-up. Read value will be set to Device ID value. If Device ID is 0, Device will start work as Gateway role. If Device ID is non 0, Device will start work as only sensor role. Sensor device will send Air-quality data to Gateway via LoRa. Gateway device will send Air-quality data to TCP/IP Server via Wi-Fi. You need to modify value about your information of AP and Server in "settings.h" file.
+Device will read GPIO(PB7 to PB4) when boot-up. Read value will be set to Device ID value. If Device ID is 0, Device will start work as Gateway role. If Device ID is non 0, Device will start work as only sensor role. Sensor device will send Air-quality data to Gateway via LoRa. Gateway device will send Air-quality data to TCP/IP Server via Wi-Fi. You need to modify information of Server and AP in "settings.h" file.
+
+## TCPIP_Server
+TCP/IP Server will save Air-quality data to MySQL(Database) after receive Air-quality data from Gateway. You need to modify information of Server in "settings.h" file.
+
+## MySQL(Database)
+You must have the following table in your database:
+
+Table Name: sensor_table
+|Columns Name|idx|temp|pres|hum|gas|score|id|regtime|
+|---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|Data Type|int(11)|float|float|float|int(11)|Tinyint(4)|varchar(32)|datetime|
+|Note|Pri. key||||||||
+
+## PHP_Webpage
+If you built web server and PHP, you can access PHP file and view charts of air-quality data using web browser. You need to modify information of Server in "index.php" file.
+
+![image](https://user-images.githubusercontent.com/99227045/184070533-fbb92330-5cf6-4487-929a-1e83de99bc9b.png)
